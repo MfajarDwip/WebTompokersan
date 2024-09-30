@@ -374,7 +374,7 @@ class PdfController extends Controller
                     false,
                     20
                 );
-                $pdf->Image('image/tompokersan.png', 145, 222, 30, 30, 'PNG');
+                $pdf->Image('image/ttdbasah.jpg', 120, 215, 80, 45, 'JPG');
                 $pdf->SetXY(21, 150);
                 $pdf->MultiCell(
                     0,
@@ -399,13 +399,6 @@ class PdfController extends Controller
 
                                                                                                 Lumajang, " . date('d-m-Y', strtotime($user->created_at)) . "
                                                                                                 LURAH TOMPOKERSAN
-
-
-
-
-
-                                                                                                JOKO SETIYO,S.Kom.MM.
-                                                                                                NIP. 19830607 201101 1 010
 
                      ",
                     0,

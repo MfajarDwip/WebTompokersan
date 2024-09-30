@@ -11,6 +11,46 @@
     <link rel="stylesheet" href="{{ asset('template/vendors/base/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('template/images/logo.png') }}" />
+
+    <style>
+        /* Custom styles for the input fields */
+        .form-control {
+            padding-left: 2.5rem;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .input-group-text {
+            position: absolute;
+            left: 0;
+            padding: 0.75rem;
+            background: transparent;
+            border: none;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,38 +60,56 @@
             class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
             <div class="d-flex align-items-center justify-content-center w-100">
                 <div class="row justify-content-center w-100">
-                    <div class="col-md-8 col-lg-3 col-xxl-3">
+                    <div class="col-md-8 col-lg-4 col-xxl-3">
                         <div class="card mb-0">
                             <div class="card-body">
+                                <!-- Back button with route to halaman utama -->
+                                <a href="{{ route('halamanutama') }}" class="btn btn-back mb-3">
+                                    <i class="mdi mdi-arrow-left"></i>
+                                </a>
+
+                                <!-- Logo -->
                                 <a href="" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="template/images/logo.png" width="180" alt="">
+                                    <img src="{{ asset('template/images/logo.png') }}" width="180" alt="">
                                 </a>
                                 <p class="text-center">Masuk Sekarang</p>
+
+                                <!-- Login Form -->
                                 <form action="{{ url('login/auth') }}" method="POST">
                                     @csrf
-                                    <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
+                                    <div class="mb-3 input-group">
+                                        <span class="input-group-text">
+                                            <i class="mdi mdi-account"></i>
+                                        </span>
                                         <input type="text" name="username"
-                                            class="form-control @error('username') is-invalid
-                                @enderror"
+                                            class="form-control @error('username') is-invalid @enderror"
                                             value="{{ old('username') }}" placeholder="Username">
                                         @error('username')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="mb-4">
-                                        <label for="password" class="form-label">Password</label>
+
+                                    <div class="mb-4 input-group">
+                                        <span class="input-group-text">
+                                            <i class="mdi mdi-lock"></i>
+                                        </span>
                                         <input type="password" name="password"
-                                            class="form-control @error('password') is-invalid
-    
-                                        @enderror"
+                                            class="form-control @error('password') is-invalid @enderror"
                                             value="{{ old('password') }}" placeholder="Password">
                                         @error('password')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                    <!-- Login Button -->
                                     <button type="submit"
-                                        class="btn btn-success w-100 py-8 fs-4 mb-4 rounded-2">Masuk</button>
+                                        class="btn btn-success w-100 py-3 fs-4 mb-4 rounded-2">Masuk</button>
+                                    <div class="text-center mb-4">
+                                            <a href="#" class="btn-link">Lupa Password?</a>
+                                        </div>
+                                        
+
+                                    <!-- Footer -->
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="fs-4 mb-0 fw-bold">Tompokersan@2024</p>
                                     </div>
@@ -63,19 +121,20 @@
             </div>
         </div>
     </div>
+    
+    <!-- JS and Libraries -->
     <script src="{{ asset('template/vendors/base/vendor.bundle.base.js') }}"></script>
     <script src="{{ asset('template/js/off-canvas.js') }}"></script>
     <script src="{{ asset('template/js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('template/js/template.js') }}"></script>
+
+    {{-- toast cdn --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- jquery cdn --}}
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </body>
 
 </html>
-
-
-{{-- toast cdn --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-{{-- jquery cdn --}}
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"
-    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
