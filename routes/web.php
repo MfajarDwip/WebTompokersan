@@ -33,7 +33,7 @@ Route::get('/export', [ExcelController::class, 'export']);
 //     Route::get('/', 'index')->name('index');
 // });
 
-Route::get('/', [VisitorController::class, 'landingpage']);
+Route::get('/', [VisitorController::class, 'landingpage']) -> name('halamanutama');
 
 // Route Login
 Route::controller(LoginController::class)->group(function () {
